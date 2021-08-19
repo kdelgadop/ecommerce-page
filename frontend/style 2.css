@@ -1,0 +1,221 @@
+*,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+section {
+    padding: 112px 0;
+}
+
+.container {
+    width: 85%;
+    margin: 0 auto;
+    max-width: 1040px;
+}
+
+.split { 
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.split > * {
+    flex-basis: 30%;
+    min-width: 240px;
+}
+
+/* start of utility classes */ 
+.spacing>*+* {
+    margin-top: var(--spacer, 32px);
+}
+/* end of utility classes */ 
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--clr-text, #fff);
+    padding: 8px 20px;
+    background-color: var(--clr-accent, blue);
+    border-radius: 4px;
+    transition: 
+        transform 250ms ease-in-out,
+        opacity 250ms linear;
+}
+
+.btn:hover, .btn:focus {
+    transform: scale(1.1);
+    opacity: .8;
+}
+
+.primary-title {
+    font-size: 64px;
+    font-size: clamp(48px, 5vw + 16px, 72px);
+    line-height: 1;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(40px, 5vw + 16px, 64px);
+    line-height: 1;
+    color: #17353d;
+    padding-bottom: 30px;
+    margin-bottom: 80px;
+}
+
+.hero {
+    color: white;
+    text-align: center;
+    padding: 240px 0;
+    /* background: #222;  */
+
+    background-image: url(img/hammer.png),
+    radial-gradient(#444, #111);
+    background-blend-mode: multiply;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+} 
+
+.featured {
+    background: #eee;
+}
+
+.featured-item {
+    display: block;
+    position: relative;
+    transform: scale(.85);
+    transition: transform 250ms ease-in-out;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.featured-item:hover, .featured-item:focus {
+    transform: scale(1);
+}
+
+.featured-item::after {
+    content: '';
+    position: absolute;
+    padding: 75% 75% 0 0;
+    background-color: #2193b0;
+    border-radius: 50%;
+    top: 10%;
+    left: 10%;
+    z-index: -1;
+}
+
+.price {
+    display: block;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.featured-details {
+    opacity: 0;
+}
+
+.featured-item:hover .featured-details, 
+.featured-item:focus .featured-details {
+    opacity: 1;
+    transition: opacity 250ms linear;
+}
+
+.our-products {
+    align-items: center;
+
+}
+
+.our-products img {
+    margin: -80px 0 0 0;
+}
+
+@media (min-width: 769px) {
+    /* formerly 744px */
+    
+    .our-products img {
+        float: right;
+        width: 60%;
+        shape-outside: circle(56.17% at center center);
+        shape-outside: url(img/goodhat.png);
+        shape-margin: 16px;
+    }
+    .product-title, .product-description {
+        text-align: left;
+        margin: 0;
+    }
+    /*
+     .product-2 img {
+        float:left;
+        shape-outside: url(img/goodhat.png);
+    }
+    .product-2 .product-title, .product-2 .product-description {
+        text-align: right;
+    }  */
+}
+
+.product-1, .product-2, .product-3 {
+    background: radial-gradient(
+        var(--clr-inner, #fff), var(--clr-outer, #444));
+    padding: 48px;
+    border-radius: 16px;
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.product-title {
+    font-size: clamp(28px, 5vw + 16px, 40px);
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 0 3.2px rgba(#000, .2);
+    text-transform: uppercase;
+}
+
+/* PARTICULARITIES */
+
+.product-2 .product-title {
+    font-size: clamp(28, 5vw+16px, 50px);
+}
+/* PARTICULARITIES */
+
+.hero {
+    --clr-accent: #faa700
+}
+.product-1 {
+    --clr-inner: #faa700;
+    --clr-outer: #e48d00;
+    --clr-accent: #a1173c;
+}
+.product-2 {
+    --clr-inner: #fce4b3;
+    --clr-outer: #eac886;
+    --clr-accent: #2f4858;
+}
+.product-3 {
+    --clr-inner: #6dd5ed;
+    --clr-outer: #2193b0;
+    --clr-accent: #008951;
+}
+

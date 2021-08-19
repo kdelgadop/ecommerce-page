@@ -1,0 +1,54 @@
+GET http://localhost:3001/stuff
+
+###
+
+GET http://localhost:3001/stuff/61043e5e493ccd8022f9b57f
+
+###
+
+POST http://localhost:3001/stuff
+Content-Type: application/json
+
+{
+      "id": "9",
+      "img": "img/shoe.png",
+      "name": "example",
+      "price": "nah"
+}
+###
+
+PATCH http://localhost:3001/stuff/61045c195eb23d57af2ab99c
+Content-Type: application/json
+
+{
+      "id": "0",
+      "img": "updatedImage",
+      "name": "updatedName",
+      "price": "UpdatedPrice"
+}
+
+###
+DELETE http://localhost:3001/stuff/61045c195eb23d57af2ab99c
+
+
+###
+POST http://localhost:3001/user/register
+
+Content-Type: application/json
+
+{
+      "name": "Bill",
+      "email": "Bill@tester.test",
+      "password": "123bill"
+}
+
+###
+
+POST http://localhost:3001/user/signin
+
+Content-Type: application/json
+
+{
+      "email": "Bill@tester.test",
+      "password": "123bill"
+}
