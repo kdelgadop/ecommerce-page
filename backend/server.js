@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 const app = express();
 const port = 3000;
 const port2 = 3001;
-const dbURI = 'mongodb+srv://Kevin:Bflv2WSjO7bdDACf@cluster0.v61kf.mongodb.net/thingsproject?retryWrites=true&w=majority'
+const dbURI = MONGO_DB
 
 app.use(cors());
 app.use(bodyParser.json())
