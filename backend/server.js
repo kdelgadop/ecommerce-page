@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 const app = express();
 const port = 3000;
 const port2 = 3001;
-const dbURI = MONGO_DB
+const dbURI = process.env.MONGODB_URI
 
 app.use(cors());
 app.use(bodyParser.json())
