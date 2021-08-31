@@ -4,9 +4,13 @@ import CartScreen from './screens/CartScreen.js';
 import CatalogScreen from './screens/CatalogScreen.js';
 import HomeScreen from './screens/HomeScreen.js';
 import OtherThings from './screens/OtherThings.js';
+import PaymentScreen from './screens/PaymentScreen.js';
+import PlaceOrderScreen from './screens/PlaceOrderScreen.js';
 import ProfileScreen from './screens/ProfileScreen.js';
 import RegisterScreen from './screens/RegisterScreen.js';
+import ShippingScreen from './screens/ShippingScreen.js';
 import SigninScreen from './screens/SigninScreen.js';
+import ThankYouScreen from './screens/ThankYouPage.js';
 
 const homeRouter = async () => {
   if (document.getElementById("hero").classList.contains('header')) {
@@ -40,9 +44,14 @@ const routes = {
   '/cart/:id': CartScreen,
   '/cart': CartScreen,
   '/signin': SigninScreen,
+  '/signin/:id': SigninScreen,
   '/register': RegisterScreen,
   '/catalog': CatalogScreen,
-  '/profile/:id': ProfileScreen
+  '/profile/:id': ProfileScreen,
+  '/shipping': ShippingScreen,
+  '/payment': PaymentScreen,
+  '/placeorder': PlaceOrderScreen,
+  '/thankyou': ThankYouScreen
 }
 
 const router = async () => {

@@ -1,4 +1,4 @@
-import { getCartItems, setCartItems } from "../../localStorage";
+import { getCartItems, getUserInfo, setCartItems } from "../../localStorage";
 import { catalogHeader, cleanPage, createFooter, parseRequestUrl } from "../../utils";
 
 
@@ -69,6 +69,7 @@ const CartScreen = {
         `];
 
         let cartItems = getCartItems()
+        const { name } = getUserInfo()
         if(cartItems.length === 0) {
             dynamic.push(`<div>Oh no, your cart is empty! Buy Something! Hurry!</div>`)
             document.getElementById("dynamic").innerHTML = dynamic.join('\n')
@@ -118,12 +119,13 @@ const CartScreen = {
             <div class="cart-action">
               <h3 class="subtotal">Subtotal ${cartItems.reduce((a, c) => a + c.qty, 0)} items:
                 $${Math.round(((cartItems.reduce((a, c) => a + c.priceNum*c.qty, 0)) + Number.EPSILON) * 100) / 100}</h3>
-              <a href="#/signin" id="checkout-button" class="btn">
+              <a href="${name ? '#/shipping' : '#/signin/cart'}" id="checkout-button" class="btn">
                 Proceed to checkout
               </a>
             </div>`
         }
     },
+
     after_Render: () => {
         const hs = document.getElementById('return');
         hs.addEventListener('click', () => {

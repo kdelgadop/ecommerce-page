@@ -579,6 +579,122 @@ button:focus {
   justify-items: center;
 }
 
+/* Checkout Steps */
+.checkoutSteps {
+  display: flex;
+  justify-content: space-between;
+  width: 40rem;
+  margin: 1rem auto;
+}
+.checkoutSteps > div {
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1 1;
+  padding-top: 1rem;
+}
+.checkoutSteps > div.active {
+  color: #008951;
+  border-top-color: #008951;
+}
+
+/* Payment Step */
+
+.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.checkbox input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.checkbox .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+.payment-img {
+  max-width: 10rem;
+  max-height: 10rem;
+  margin-left: 4rem;
+}
+
+/* Order */
+.order {
+  padding: 1rem;
+}
+.order-info {
+  flex: 3 1 60rem;
+  align-items: flex-end;
+}
+.order-action {
+  display: flex;
+  flex: 1 1 20rem;
+  background-color: #f0f0f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  top: 0rem;
+  width: 100%;
+  margin: 3rem;
+}
+.order-action .btn {
+  text-align: center;
+  margin: auto;
+  width: 57rem;
+  padding: 10px;
+  background-color: #faa700;
+}
+
 /* Transparent Overlay */
 .loading:before {
   content: "";
@@ -594,6 +710,21 @@ button:focus {
     rgba(20, 20, 20, 0.8),
     rgba(0, 0, 0, 0.8)
   );
+}
+
+/* Thank You Page */
+.thankyou {
+  padding: 13rem;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+.pdd {
+  margin: 1rem;
 }
 
 /* :not(:required) hides these rules from IE9 and below */

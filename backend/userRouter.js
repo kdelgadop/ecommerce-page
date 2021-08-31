@@ -29,8 +29,14 @@ const authentication = (req, res, next) => {
 // Router routes
 userRouter.post('/register', expressAsyncHandler(async ( req, res ) => {
     try {
+        const alreadyUser = await User.findOne({ 
+        email: req.body.email
+        });
+        if(alreadyUser) {
+          res.status(401).send({ message: 'This email is taken.' })
+        } else {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
+        
         const user = new User({ 
             name: req.body.name,
             email: req.body.email,
@@ -47,7 +53,8 @@ userRouter.post('/register', expressAsyncHandler(async ( req, res ) => {
                  password: newUser.password,
                  token: jwt.sign({ _id: newUser._id, name: newUser.name, email: newUser.email, password: newUser.password}, process.env.JWT_SECRET)
              })
-         }
+         } 
+        }
     } catch (error) {
         console.log(error);
         res.status(500).send();
@@ -81,7 +88,14 @@ userRouter.post('/signin', expressAsyncHandler(async ( req, res ) => {
 }));
 
 userRouter.put('/:id', authentication, expressAsyncHandler(async ( req, res ) => {
-
+    if (req.body.email) {
+        const alreadyUser = await User.findOne({ 
+            email: req.body.email
+            })
+            if(alreadyUser) {
+              res.status(401).send({ message: 'This email is taken.' })
+            }
+    }
     const user = await User.findById(req.params.id);
     if(!user) return res.status(404).send({ message: 'User Not Found' });
     try {

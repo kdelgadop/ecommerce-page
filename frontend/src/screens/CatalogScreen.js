@@ -3,7 +3,6 @@ import { catalogHeader, cleanPage, createFooter, hideLoading, showLoading } from
 const CatalogScreen = {
     render: async () => {
         cleanPage();
-        cleanPage();
         catalogHeader();
         createFooter();
 

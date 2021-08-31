@@ -74,4 +74,56 @@ export const update = async({ name, email, password }) => {
         console.log(error);
         return { error: error.response.data.message || error.message };
     }
-}
+};
+
+export const setOrder = async({ name, address, order, orderStatus, email, total }) => {
+    try {
+        const user = getUserInfo();
+        const response = await axios({
+            url: 'http://localhost:3001/orders/send',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            },
+            data: {
+                name,
+                address,
+                order,
+                orderStatus,
+                email,
+                total
+            }
+        })
+        if(response.statusText !== 'OK') {
+            throw new Error(response.data.message)
+        }
+        return response.data
+    } catch (error) {
+        console.log(error);
+        return { error: error.response.data.message || error.message };
+    }
+};
+
+export const getOrders = async({ email }) => {
+    try {
+        const response = await axios({
+            url: 'http://localhost:3001/orders/get',
+            method: 'POST',
+            header: {
+                'Content-Type': 'application/json'
+            },
+            data: {
+                email
+            }
+        })
+        if(response.statusText !== 'OK'){
+            console.log(response.data.message);
+            throw new Error(response.data.message)
+        }
+        return response.data
+    } catch (error) {
+        console.log(error);
+        return { error: error.response.data.message || error.message };
+    }
+};

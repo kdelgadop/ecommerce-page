@@ -1,6 +1,6 @@
 import { signin } from "../../api";
 import { setUserInfo, user } from "../../localStorage";
-import { catalogHeader, cleanPage, createFooter, hideLoading, showLoading, showMessage } from "../../utils"
+import { catalogHeader, cleanPage, createFooter, hideLoading, parseRequestUrl, showLoading, showMessage } from "../../utils"
 
 const SigninScreen = {
     render: () => {
@@ -56,7 +56,12 @@ const SigninScreen = {
             }
             else {
                 setUserInfo(data);
-                document.location.hash = '/catalog'
+                const url = parseRequestUrl();
+                if (url.id === 'cart'){
+                  document.location.hash = '/shipping'
+                } else {
+                  document.location.hash = '/catalog'
+                }
             }
         })
     }

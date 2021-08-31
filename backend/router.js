@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
-  });
+});
 
   router.get('/:id', getItem, async (req, res) => {
     try {
@@ -52,42 +52,44 @@ router.post('/', async (req, res) => {
     }
   })
 
-  router.patch('/:id', getItem, async (req, res) => {
-      if(req.body.id !== null) {
-        res.itemFound.id = req.body.id;
-      }
-      if (req.body.name !== null) {
-        res.itemFound.name = req.body.name;    
-      }
-      if(req.body.img !== null) {
-        res.itemFound.img = req.body.img;
-      }
-      if (req.body.price !== null) {
-        res.itemFound.price = req.body.price;    
-      }
-      if(req.body.img !== null) {
-        res.itemFound.img = req.body.img;
-      }
-      if (req.body.description !== null) {
-        res.itemFound.description = req.body.description; 
-      }
-      try {
-        const updatedThing = await res.itemFound.save();
-        res.json(updatedThing);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-  });
+  //This is just me practicing .patch and .delete requests:
+
+//   router.patch('/:id', getItem, async (req, res) => {
+//       if(req.body.id !== null) {
+//         res.itemFound.id = req.body.id;
+//       }
+//       if (req.body.name !== null) {
+//         res.itemFound.name = req.body.name;    
+//       }
+//       if(req.body.img !== null) {
+//         res.itemFound.img = req.body.img;
+//       }
+//       if (req.body.price !== null) {
+//         res.itemFound.price = req.body.price;    
+//       }
+//       if(req.body.img !== null) {
+//         res.itemFound.img = req.body.img;
+//       }
+//       if (req.body.description !== null) {
+//         res.itemFound.description = req.body.description; 
+//       }
+//       try {
+//         const updatedThing = await res.itemFound.save();
+//         res.json(updatedThing);
+//     } catch (error) {
+//       res.status(400).json({ message: error.message });
+//     }
+//   });
   
-router.delete('/:id', getItem, async (req, res) => {
-    try {
-        await res.itemFound.remove();
-        res.json({ message: 'Item Deleted' });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-        console.log(error);    
-    }
-});
+// router.delete('/:id', getItem, async (req, res) => {
+//     try {
+//         await res.itemFound.remove();
+//         res.json({ message: 'Item Deleted' });
+//     } catch (error) {
+//         res.status(500).json({ message: error.message });
+//         console.log(error);    
+//     }
+// });
 
 // router.delete('/', async (req, res) => {
 //     try {

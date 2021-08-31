@@ -15,8 +15,15 @@ export const cleanPage = () => {
     <div class="container" id="container">
                     
     </div>`
-    document.getElementsByTagName('section')[0].style.padding = '1rem 0'
-    document.getElementsByTagName('section')[1].style.padding = '1rem 0'
+    const { page } = parseRequestUrl()
+    if (page === 'register'){
+      document.getElementsByTagName('section')[0].style.padding = '5rem 0'
+      document.getElementsByTagName('section')[1].style.padding = '1rem 0'
+    } else {
+      document.getElementsByTagName('section')[0].style.padding = '1rem 0'
+      document.getElementsByTagName('section')[1].style.padding = '1rem 0'
+    }
+    
     if (document.getElementById("bottom-section").classList.contains('cartScreen')) {
       document.getElementById("bottom-section").classList.remove('cartScreen')
     }
@@ -77,3 +84,14 @@ export const catalogHeader = () => {
   export const createFooter = () => {
     document.getElementById("bottom-section").classList.add("footer")
   }
+
+export const CheckoutSteps = {
+    render: (props) => `
+        <div class="checkoutSteps">
+            <div class="${props.step1 ? 'active' : ''}">Signin</div>
+            <div class="${props.step2 ? 'active' : ''}">Shipping</div>
+            <div class="${props.step3 ? 'active' : ''}">Payment</div>
+            <div class="${props.step4 ? 'active' : ''}">Place Order</div>
+        </div>
+        `,
+}
