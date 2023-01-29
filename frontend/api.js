@@ -1,10 +1,11 @@
 import axios from "axios";
 import { getUserInfo } from "./localStorage";
+import { apiUrl } from "./src/config";
 
 export const register = async({ name, email, password }) => {
     try {
         const response = await axios({
-            url: 'http://localhost:3001/user/register',
+            url: `${apiUrl}/user/register`,
             method: 'POST',
             header: {
                 'Content-Type': 'application/json'
@@ -28,7 +29,7 @@ export const register = async({ name, email, password }) => {
 export const signin = async({ email, password }) => {
     try {
         const response = await axios({
-            url: 'http://localhost:3001/user/signin',
+            url: `${apiUrl}/user/signin`,
             method: 'POST',
             header: {
                 'Content-Type': 'application/json'
@@ -54,7 +55,7 @@ export const update = async({ name, email, password }) => {
         const user = getUserInfo();
 
         const response = await axios({
-            url: `http://localhost:3001/user/${user._id}`,
+            url: `${apiUrl}/user/${user._id}`,
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -80,7 +81,7 @@ export const setOrder = async({ name, address, order, orderStatus, email, total 
     try {
         const user = getUserInfo();
         const response = await axios({
-            url: 'http://localhost:3001/orders/send',
+            url: `${apiUrl}/orders/send`,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -108,7 +109,7 @@ export const setOrder = async({ name, address, order, orderStatus, email, total 
 export const getOrders = async({ email }) => {
     try {
         const response = await axios({
-            url: 'http://localhost:3001/orders/get',
+            url: `${apiUrl}/orders/get`,
             method: 'POST',
             header: {
                 'Content-Type': 'application/json'
