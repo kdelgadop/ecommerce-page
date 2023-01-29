@@ -14,7 +14,6 @@ const authentication = (req, res, next) => {
         res.status(401).send({ message: 'Token is not supplied' })
     } else { 
         const token = bearerToken.slice(7, bearerToken.length)
-        // const token = bearerToken.split(' ')[1]
         jwt.verify(token, config.JWT_SECRET, (error, data) => {
             if (error) {
                 res.status(403).send({ message: 'Invalid Token' });
