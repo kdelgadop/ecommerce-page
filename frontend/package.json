@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --watch-content-base --open",
+    "start": "webpack-dev-server --watch-content-base --open",
+    "build": "webpack --mode=production --output ./main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,5 +14,9 @@
     "webpack": "^5.46.0",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chartist": "^0.11.4"
   }
 }
