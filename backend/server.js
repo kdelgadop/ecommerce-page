@@ -20,7 +20,7 @@ app.use('/order', orderRouter)
 
 // mongoose.connect('mongodb://localhost/things', { useUnifiedTopology: true, useNewUrlParser: true });
 mongoose.connect(dbURI, { useUnifiedTopology: true, useNewUrlParser: true }).then((result) => {
-app.listen(port2, ()=> console.log("Served at http://localhost:3001/stuff"))
+app.listen(config.PORT, ()=> console.log("Served at http://localhost:3001/stuff"))
 });
 
 const db = mongoose.connection; 
