@@ -1,9 +1,11 @@
+import { apiUrl } from "../config";
+
 const OtherThings = {
   render: async () => {
     let array = [];
     const random = Math.floor(Math.random() * 2 + 1);
     try {
-      const response = await fetch('http://localhost:3001/stuff', {
+      const response = await fetch(`${apiUrl}/stuff`, {
         headers: {
           'Content-Type': 'application/json'
         },

@@ -1,4 +1,5 @@
 import { catalogHeader, cleanPage, createFooter, hideLoading, showLoading } from "../../utils";
+import { apiUrl } from "../config";
 
 const CatalogScreen = {
     render: async () => {
@@ -6,7 +7,7 @@ const CatalogScreen = {
         catalogHeader();
         createFooter();
 
-      const response = await fetch("http://localhost:3001/stuff", {
+      const response = await fetch(`${apiUrl}/stuff`, {
         headers: {
           'Content-Type': 'application/json',
         },

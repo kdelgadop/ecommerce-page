@@ -1,10 +1,12 @@
+import { apiUrl } from "../config";
+
 const HomeScreen = {
   render: async () => {
     let array = [];
     let random = Math.floor(Math.random() * 2 +1);
 
     try {
-      const response = await fetch("http://localhost:3001/stuff", {
+      const response = await fetch(`${apiUrl}/stuff`, {
         headers: {
           'Content-Type': 'application/json',
         },

@@ -1,5 +1,6 @@
 import { getCartItems, getUserInfo, setCartItems } from "../../localStorage";
 import { catalogHeader, cleanPage, createFooter, parseRequestUrl } from "../../utils";
+import { apiUrl } from "../config";
 
 
 const addToCart = async (item, forceUpdate = false) => {
@@ -38,7 +39,7 @@ const CartScreen = {
     render: async () => {
         const url = parseRequestUrl()
         if(url.id) {
-            const response = await fetch("http://localhost:3001/stuff", {
+            const response = await fetch(`${apiUrl}/stuff`, {
                 headers: {
                   'Content-Type': 'application/json',
                 },
