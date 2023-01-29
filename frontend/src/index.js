@@ -12,6 +12,8 @@ import ShippingScreen from './screens/ShippingScreen.js';
 import SigninScreen from './screens/SigninScreen.js';
 import ThankYouScreen from './screens/ThankYouPage.js';
 
+console.log('INDEX JS:');
+
 const homeRouter = async () => {
   if (document.getElementById("hero").classList.contains('header')) {
     document.getElementById("hero").classList.remove('header')
@@ -59,8 +61,9 @@ const router = async () => {
     document.getElementById("bottom-section").classList.remove('cartScreen')
   }
   const url = parseRequestUrl();
+  console.log('url:', url);
   const parseUrl = (url.page ? `/${url.page}` : '/') + (url.id ? `/:id` : '')
-
+  console.log('parseUrl:', parseUrl);
   if(parseUrl === '/' && parseUrl !== '/catalog') {
     showLoading();
     homeRouter();
