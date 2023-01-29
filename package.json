@@ -4,7 +4,10 @@
   "main": ".eslintrc.js",
   "scripts": {
     "start": "nodemon --watch backend --exec babel-node backend/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dest && babel backend -d dist",
+    "serve": "node dist/server.js",
+    "heroku-prebuild": "cd frontend && npm install --dev",
+    "heroku-postbuild": "npm run build && cd frontend && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -29,5 +32,9 @@
     "@types/express": "^4.17.13",
     "babel-preset-env": "^1.7.0"
   },
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
+  }
 }
