@@ -7,7 +7,7 @@
     "build": "rm -rf dest && babel backend -d dist",
     "serve": "node dist/server.js",
     "heroku-prebuild": "cd frontend && npm install --dev",
-    "heroku-postbuild": "npm run build && cd frontend && npm install && npm run build"
+    "heroku-postbuild": "npm run build && cd frontend && npm install && npm run build && npm start"
   },
   "author": "",
   "license": "ISC",
