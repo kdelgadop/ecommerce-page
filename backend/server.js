@@ -7,10 +7,8 @@ import orderRouter from './orderRouter'
 const mongoose = require('mongoose')
 
 const app = express();
-const port = 3000;
-const port2 = 3001;
-const dbURI = process.env.MONGODB_URL
-const dbURI02 = process.env.MONGODB_URI_ORDERS
+const dbURI = config.MONGODB_URL
+
 
 app.use(cors());
 app.use(bodyParser.json())
