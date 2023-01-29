@@ -2,7 +2,7 @@ import express from 'express'
 const cors = require('cors')
 import bodyParser from 'body-parser'
 import userRouter from './userRouter'
-import data from './data'
+import config from './config';
 import orderRouter from './orderRouter'
 const mongoose = require('mongoose')
 
