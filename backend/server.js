@@ -9,8 +9,6 @@ const mongoose = require('mongoose')
 const app = express();
 const dbURI = config.MONGODB_URL
 
-console.log('config:', config);
-
 app.use(cors());
 app.use(bodyParser.json())
 app.use(express.json());
