@@ -6,8 +6,6 @@ import config from './config'
 import orderRouter from './orderRouter'
 const mongoose = require('mongoose')
 
-console.log('config:', config);
-
 const app = express();
 const dbURI = config.MONGODB_URL
 
