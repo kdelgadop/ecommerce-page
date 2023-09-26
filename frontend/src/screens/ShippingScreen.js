@@ -8,7 +8,7 @@ const ShippingScreen = {
         catalogHeader();
         createFooter();
         const { name } = getUserInfo();
-        if(getUserInfo.name.length > '1' && getUserInfo.name !== '' && getUserInfo) {
+        if(!(name.length > 1 && name !== '' && getUserInfo())) {
           document.location.hash = '/signin'
         }
         const { address, city, postalCode, country } = getShipping()
