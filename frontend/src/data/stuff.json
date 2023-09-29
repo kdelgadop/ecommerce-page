@@ -1,0 +1,191 @@
+[
+  {
+    "_id": "610ef68c665a5c82b64e18c8",
+    "img": "img/goodomino.png",
+    "name": "single domino",
+    "price": "$0.71",
+    "group": 1,
+    "countInStock": 1,
+    "priceNum": 0.71
+  },
+  {
+    "_id": "610ef6a6665a5c82b64e2495",
+    "img": "img/plate.png",
+    "name": "plastic knife",
+    "price": "$0.25",
+    "group": 2,
+    "countInStock": 16,
+    "priceNum": 0.25
+  },
+  {
+    "_id": "610ef856665a5c82b64edfff",
+    "img": "img/chalk.png",
+    "name": "chalk *box not included",
+    "price": "$6.99",
+    "group": 2,
+    "countInStock": 6,
+    "priceNum": 6.99
+  },
+  {
+    "_id": "610ef54c665a5c82b64d8e9b",
+    "img": "img/shoe.png",
+    "name": "branded shoe",
+    "price": "$69",
+    "group": 1,
+    "countInStock": 2,
+    "priceNum": 69
+  },
+  {
+    "_id": "610ef924665a5c82b64f3739",
+    "img": "img/straw.png",
+    "name": "Unpractical Fun Straw",
+    "description": "It takes longer but it's so much fun to transport liquid into your vessel.",
+    "design": "1",
+    "group": 4,
+    "countInStock": 99,
+    "price": "$0.10",
+    "priceNum": 0.1
+  },
+  {
+    "_id": "61043ec0493ccd8022f9e7c7",
+    "things2": [
+      {
+        "id": 4,
+        "img": "img/plate.png",
+        "name": "plastic knife",
+        "price": "$0.25"
+      },
+      {
+        "id": 5,
+        "img": "img/chalk.png",
+        "name": "chalk *box not included",
+        "price": "$6.99"
+      },
+      {
+        "id": 6,
+        "img": "img/teeth.png",
+        "name": "Old Jerkin's teeth",
+        "price": "$19.99"
+      }
+    ]
+  },
+  {
+    "_id": "610ef86f665a5c82b64ee959",
+    "img": "img/teeth.png",
+    "name": "Old Jerkin's teeth",
+    "price": "$19.99",
+    "group": 2,
+    "countInStock": 1,
+    "priceNum": 19.99
+  },
+  {
+    "_id": "61043e5e493ccd8022f9b57f",
+    "things": [
+      {
+        "id": 1,
+        "img": "img/goodpost.png",
+        "name": "lamp post",
+        "price": "$99"
+      },
+      {
+        "id": 2,
+        "img": "img/shoe.png",
+        "name": "branded shoe",
+        "price": "$69"
+      },
+      {
+        "id": 3,
+        "img": "img/goodomino.png",
+        "name": "single domino",
+        "price": "$0.71"
+      }
+    ]
+  },
+  {
+    "_id": "610ef8c1665a5c82b64f0dbd",
+    "img": "img/ak.png",
+    "name": "This thing!",
+    "description": "Use it for something or some other thing! We don't care! Just buy the damn thing! Please.",
+    "design": "3",
+    "group": 3,
+    "countInStock": 6,
+    "price": "$699",
+    "priceNum": 699
+  },
+  {
+    "_id": "610efa4f665a5c82b64fc1b9",
+    "img": "img/fred.png",
+    "name": "Fred",
+    "description": "For a limited time offer, take Fred. We don't want him anymore.",
+    "design": "3",
+    "group": 4,
+    "countInStock": "1",
+    "price": "FREE",
+    "priceNum": 0
+  },
+  {
+    "_id": "610ef530665a5c82b64d7838",
+    "img": "img/goodpost.png",
+    "name": "lamp post",
+    "price": "$99",
+    "group": 1,
+    "countInStock": 4,
+    "priceNum": 99
+  },
+  {
+    "_id": "610ef898665a5c82b64efbb5",
+    "img": "img/goodhat.png",
+    "name": "Put it on your head!",
+    "description": "Go ahead! Put it on your head! Or don't! Whatever! Just buy it!",
+    "design": "2",
+    "group": 3,
+    "countInStock": 7,
+    "price": "$9.99",
+    "priceNum": 9.99
+  },
+  {
+    "_id": "610ef887665a5c82b64ef529",
+    "img": "img/goodclip.png",
+    "name": "used nail clipper",
+    "description": "Use it so clip your nails of other people's nails or something.",
+    "design": "1",
+    "group": 3,
+    "countInStock": 27,
+    "priceNum": 0.99,
+    "price": "$0.99"
+  },
+  {
+    "_id": "610ef93d665a5c82b64f433d",
+    "img": "img/sock.png",
+    "name": "Branded single right sock",
+    "description": "Hate when socks go missing? buy this other one and pair it up with an identical copy you may have lying around.",
+    "design": "2",
+    "group": 4,
+    "countInStock": "1",
+    "price": "$0.99",
+    "priceNum": 0.99
+  },
+  {
+    "_id": "61043ede493ccd8022f9f5a4",
+    "others": [
+      {
+        "id": 1,
+        "img": "img/goodclip.png",
+        "name": "used nail clipper",
+        "description": "Use it so clip your nails of other people's nails or something."
+      },
+      {
+        "id": 2,
+        "img": "img/goodhat.png",
+        "name": "Put it on your head!",
+        "description": "Go ahead! Put it on your head! Or don't! Whatever! Just buy it!"
+      },
+      {
+        "id": 3,
+        "img": "img/ak.png",
+        "name": "This thing!",
+        "description": "Use it for something or some other thing! We don't care! Just buy the damn thing! Please."
+      }
+    ]
+  }
+]
