@@ -63,7 +63,7 @@ module.exports = {
     {
       id: 1,
       img: 'img/straw.png',
-      name: 'Unpractical Fun Straw',
+      name: 'Inpractical Fun Straw',
       description: "It takes longer but it's so much fun to transport liquid into your vessel.",
     },
     {
