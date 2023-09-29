@@ -1,4 +1,6 @@
 import { apiUrl } from "../config";
+// Hardcoded data in case the api call fails and the website doesn't crash
+import stuffJustInCase from "../data/stuff.json";
 
 const HomeScreen = {
   render: async () => {
@@ -12,15 +14,17 @@ const HomeScreen = {
         },
       });
       const jsonResponse = await response.json();
-
-      if (random === 1) {
-        array = jsonResponse.filter(x => x.group === 1);
-      } else {
-        array = jsonResponse.filter(x => x.group === 2);
-      }
-
+      array = jsonResponse
     } catch (error) {
-      return  `<div>Error in getting data</div>`
+      // Just in case the api doesn't respond bc Mongo shut down the server
+      // se serve hardcoded data for demostration
+      // return  `<div>Error in getting data</div>`
+      array = stuffJustInCase
+    }
+    if (random === 1) {
+      array = array.filter(x => x.group === 1);
+    } else {
+      array = array.filter(x => x.group === 2);
     }
 
     return `
