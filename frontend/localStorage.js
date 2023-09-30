@@ -1,3 +1,6 @@
+import bcrypt from 'bcryptjs'
+const salt = bcrypt.genSaltSync(10);
+
 export const setCartItems = (item) => {
     localStorage.setItem("cart", JSON.stringify(item));
 };
@@ -93,6 +96,8 @@ export const getAllUsers = () => localStorage.getItem('allUsers') ? JSON.parse(l
 export const addUserToAllUsers = (user) => {
     const allUsers = getAllUsers()
     if (user.name && user.email && user.password) {
+        const hashedPassword = bcrypt.hashSync(user.password, salt);
+        user.password = hashedPassword
         allUsers.push(user)
         localStorage.setItem('allUsers', JSON.stringify(allUsers))
     }
@@ -103,19 +108,23 @@ export const signInLocalStorage = (signedUser) => {
     if (signedUser.email && signedUser.password) {
         const foundUser = allUsers.find(user => user.email === signedUser.email)
         if (foundUser) {
-            return foundUser.password === signedUser.password ? foundUser : {error: 'Wrong password'}
+            if (bcrypt.compareSync(signedUser.password, foundUser.password)) return foundUser
+            else return  {error: 'Wrong password'}
         } else return {error: 'User not found'}
     } else return {error: 'User email and/or password missing'}
 }
 
 export const updateUser = (user) => {
     const allUsers = getAllUsers()
-    if (user.name && user.email && user.password) {
-        const updatedUsers = allUsers.filter(user => user.email !== user.email)
+    const currentUser = getUserInfo()
+    if (currentUser.name && currentUser.email && currentUser.password) {
+        const updatedUsers = allUsers.filter(user => user.email !== currentUser.email)
+        const hashedPassword = bcrypt.hashSync(user.password, 10);
+        user.password = hashedPassword
         updatedUsers.push(user)
         localStorage.setItem('allUsers', JSON.stringify(updatedUsers))
         setUserInfo(user)
-        return updatedUsers
+        return user
     }
 }
 
@@ -136,3 +145,4 @@ export const addOrderToAllOrders = (order) => {
 }
 
 // Clean all local storage 🧹
+// export const clearAllStorage = () => localStorage.clear();
