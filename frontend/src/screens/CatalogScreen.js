@@ -1,18 +1,26 @@
 import { catalogHeader, cleanPage, createFooter, hideLoading, showLoading } from "../../utils";
 import { apiUrl } from "../config";
+//Hardcoded data in case the api call fails and the website doesn't crash
+import stuffJustInCase from "../data/stuff.json";
 
 const CatalogScreen = {
     render: async () => {
         cleanPage();
         catalogHeader();
         createFooter();
+        let jsonResponse = []
+        try {
+            const response = await fetch(`${apiUrl}/stuff`, {
+                headers: {
+                'Content-Type': 'application/json',
+                },
+            });
+            jsonResponse = await response.json()
+        } catch (error) {
+            jsonResponse = stuffJustInCase;
+        }
 
-      const response = await fetch(`${apiUrl}/stuff`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    const jsonResponse = await response.json();
+    
     const catalog = jsonResponse.filter(x => x.group);
     const dynamic = ['<h1>Catalog</h1>','<ul class="products">']
     catalog.forEach(e => {

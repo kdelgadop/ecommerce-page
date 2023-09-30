@@ -1,7 +1,8 @@
 import { getCartItems, getUserInfo, setCartItems } from "../../localStorage";
 import { catalogHeader, cleanPage, createFooter, parseRequestUrl } from "../../utils";
 import { apiUrl } from "../config";
-
+// Hardcoded data in case the api call fails and the website doesn't crash
+import stuffJustInCase from "../data/stuff.json";
 
 const addToCart = async (item, forceUpdate = false) => {
     let cartItems = getCartItems();
@@ -39,12 +40,18 @@ const CartScreen = {
     render: async () => {
         const url = parseRequestUrl()
         if(url.id) {
+          let jsonResponse = []
+          try {
             const response = await fetch(`${apiUrl}/stuff`, {
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-              });
-            const jsonResponse = await response.json();
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            });
+            jsonResponse = await response.json();
+          } catch (error) {
+            jsonResponse = stuffJustInCase;
+          }
+
             const itemToCart = jsonResponse.find(x => x._id === url.id)
             addToCart({ 
                 _id: itemToCart._id,

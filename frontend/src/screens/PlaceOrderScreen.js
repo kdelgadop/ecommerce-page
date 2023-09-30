@@ -73,7 +73,7 @@ const PlaceOrderScreen = {
                           <div class="cart-price">
                             ${item.price}
                           </div>
-                        </li>`).join()}
+                        </li>`).join('')}
                     </ul>
                   </div>
               </div>

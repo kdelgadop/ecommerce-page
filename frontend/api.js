@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getUserInfo } from "./localStorage";
+import { addOrderToAllOrders, addUserToAllUsers, getAllOrders, getUserInfo, setUserInfo, signInLocalStorage, updateUser } from "./localStorage";
 import { apiUrl } from "./src/config";
 
 export const register = async({ name, email, password }) => {
@@ -22,6 +22,17 @@ export const register = async({ name, email, password }) => {
         return response.data
     } catch (error) {
         console.log(error);
+        if (!window.location.host.includes('local')) {
+            const newUser = {
+                _id: Math.floor((1 + Math.random()) * 0x10000).toString(8),
+                name,
+                email,
+                password
+            }
+            addUserToAllUsers(newUser)
+            setUserInfo(newUser)
+            return getUserInfo()
+        }
         return { error: error.response.data.message || error.message };
     }
 };
@@ -46,6 +57,10 @@ export const signin = async({ email, password }) => {
         return response.data
     } catch (error) {
         console.log(error);
+       if (!window.location.host.includes('local')) {
+        const foundUser = signInLocalStorage({ email, password })
+        return foundUser
+       }
         return { error: error.response.data.message || error.message };
     }
 };
@@ -73,6 +88,17 @@ export const update = async({ name, email, password }) => {
         return response.data
     } catch (error) {
         console.log(error);
+       if (!window.location.host.includes('local')) {
+        const user = getUserInfo()
+        const updatedUser = {
+            _id: user._id,
+            name: name || user.name,
+            email: email || user.email,
+            password: password || user.password
+        }
+        updateUser(updatedUser)
+        return updatedUser
+       }
         return { error: error.response.data.message || error.message };
     }
 };
@@ -102,6 +128,20 @@ export const setOrder = async({ name, address, order, orderStatus, email, total 
         return response.data
     } catch (error) {
         console.log(error);
+        if (!window.location.host.includes('local')) {
+            const newOrder = {
+                _id: Math.floor((1 + Math.random()) * 0x10000).toString(8),
+                name,
+                address,
+                order,
+                orderStatus,
+                email,
+                total
+            }
+            addOrderToAllOrders(newOrder)
+            return newOrder
+        }
+
         return { error: error.response.data.message || error.message };
     }
 };
@@ -125,6 +165,9 @@ export const getOrders = async({ email }) => {
         return response.data
     } catch (error) {
         console.log(error);
+        if (!window.location.host.includes('local')) {
+            return getAllOrders()
+        }
         return { error: error.response.data.message || error.message };
     }
 };

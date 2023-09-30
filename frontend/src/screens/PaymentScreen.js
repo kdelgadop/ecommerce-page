@@ -8,9 +8,10 @@ const PaymentScreen = {
         catalogHeader();
         createFooter();
         const dynamic = document.getElementById("dynamic")
-      if(getUserInfo.name.length > '1' && getUserInfo.name !== '' && getUserInfo) {
-        document.location.hash = '/signin'
-      }
+        const { name } = getUserInfo();
+        if(!(name.length > 1 && name !== '' && getUserInfo())) {
+          document.location.hash = '/signin'
+        }
       dynamic.innerHTML = `
       ${CheckoutSteps.render({ step1: true, step2: true, step3: true })}
         <div class="form-container">

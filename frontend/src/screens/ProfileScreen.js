@@ -1,11 +1,11 @@
 import { getOrders, update } from "../../api";
-import { clearUser, getUserInfo, setUserInfo } from "../../localStorage";
+import { clearUser, getAllOrders, getUserInfo, setUserInfo } from "../../localStorage";
 import { catalogHeader, cleanPage, createFooter, hideLoading, showLoading, showMessage } from "../../utils";
 
 const ProfileScreen = {
     render: async () => {
       const { name, email } = getUserInfo();
-      const orders = await getOrders({ email: email });
+      const orders = await getOrders({ email: email }) || getAllOrders();
 
       if(!name && name.length > '1') {
         document.location.hash = '/';

@@ -1,4 +1,6 @@
 import { apiUrl } from "../config";
+// Hardcoded data in case the api call fails and the website doesn't crash
+import stuffJustInCase from "../data/stuff.json";
 
 const OtherThings = {
   render: async () => {
@@ -11,13 +13,19 @@ const OtherThings = {
         },
       });
 
-      const jsonResponse = await response.json();
+      array = await response.json();
+
+    } catch (error) {
+      // Just in case the api doesn't respond bc Mongo shut down the server
+      // se serve hardcoded data for demostration
+      // return  `<div>Error in getting data</div>`
+      array = stuffJustInCase
+    }
 
       if (random === 1) {
-        array = jsonResponse.filter(x => x.group === 3);
-
+        array = array.filter(x => x.group === 3);
       } else {
-        array = jsonResponse.filter(x => x.group === 4);
+        array = array.filter(x => x.group === 4);
       }
 
       const body = ['<h2 class="section-title">Our other things</h2>'];
@@ -33,9 +41,7 @@ const OtherThings = {
       return body.join('');
 
 
-    } catch (error) {
-      return  `<div>Error in getting data</div>`
-    }
+
   },
 };
 export default OtherThings;
