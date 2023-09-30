@@ -30,7 +30,7 @@ const RegisterScreen = {
                 <input type="password" name="password" id="password" />
               </li>
               <li>
-              <label for="password">Password</label>
+              <label for="password">Confirm Password</label>
               <input type="password" name="password" id="password2" />
             </li>
               <li>
