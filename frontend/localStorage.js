@@ -74,3 +74,51 @@ export const user = {
         userInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : { name: '', email: '', password: '' }
     }
 };
+
+//CODE FOR DEMO SITE:
+/* 
+    In the /backend folder, I have POST and GET functions that handle this functionality
+    However, this site serves the unique purpouse of being a humorous demo site.
+    Therefore, to prevent creating a firebase app with cron jobs to keep the server alive +
+    prevent working on security issues, This code here handles the same functionality
+    for the purpouse of beind demostrated. 
+
+    I recognize this is NOT the way to handle users and orders in any site 😁
+ */
+
+// Users 👥
+
+export const getAllUsers = () => localStorage.getItem('allUsers') ? JSON.parse(localStorage.getItem('allUsers')) : []
+
+export const addUserToAllUsers = (user) => {
+    const allUsers = getAllUsers()
+    if (user.name && user.email && user.password) {
+        allUsers.push(user)
+        localStorage.setItem('allUsers', JSON.stringify(allUsers))
+    }
+}
+
+export const signInLocalStorage = (user) => {
+    const allUsers = getAllUsers()
+    if (user.name && user.email && user.password) {
+        allUsers.push(user)
+        localStorage.setItem('allUsers', allUsers)
+    }
+}
+// Orders 📝
+
+export const getAllOrders = () => {
+    const user = getUserInfo()
+    if (!user.name) return []
+    const orders = localStorage.getItem('allOrders') ? JSON.parse(localStorage.getItem('allOrders')) : []
+    return orders.filter(order => order.email === user.email)
+
+}
+
+export const addOrderToAllOrders = (order) => {
+    const allOrders = getAllOrders()
+    allOrders.push(order)
+    localStorage.setItem('allOrders', JSON.stringify(allOrders))
+}
+
+// Clean all local storage 🧹
