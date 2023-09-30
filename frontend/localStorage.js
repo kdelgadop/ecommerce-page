@@ -98,13 +98,27 @@ export const addUserToAllUsers = (user) => {
     }
 }
 
-export const signInLocalStorage = (user) => {
+export const signInLocalStorage = (signedUser) => {
+    const allUsers = getAllUsers()
+    if (signedUser.email && signedUser.password) {
+        const foundUser = allUsers.find(user => user.email === signedUser.email)
+        if (foundUser) {
+            return foundUser.password === signedUser.password ? foundUser : {error: 'Wrong password'}
+        } else return {error: 'User not found'}
+    } else return {error: 'User email and/or password missing'}
+}
+
+export const updateUser = (user) => {
     const allUsers = getAllUsers()
     if (user.name && user.email && user.password) {
-        allUsers.push(user)
-        localStorage.setItem('allUsers', allUsers)
+        const updatedUsers = allUsers.filter(user => user.email !== user.email)
+        updatedUsers.push(user)
+        localStorage.setItem('allUsers', JSON.stringify(updatedUsers))
+        setUserInfo(user)
+        return updatedUsers
     }
 }
+
 // Orders 📝
 
 export const getAllOrders = () => {

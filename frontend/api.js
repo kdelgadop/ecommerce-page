@@ -1,5 +1,5 @@
 import axios from "axios";
-import { addOrderToAllOrders, addUserToAllUsers, getAllOrders, getUserInfo, setUserInfo } from "./localStorage";
+import { addOrderToAllOrders, addUserToAllUsers, getAllOrders, getUserInfo, setUserInfo, signInLocalStorage, updateUser } from "./localStorage";
 import { apiUrl } from "./src/config";
 
 export const register = async({ name, email, password }) => {
@@ -57,7 +57,10 @@ export const signin = async({ email, password }) => {
         return response.data
     } catch (error) {
         console.log(error);
-        if (!window.location.host.includes('local')) {}
+       if (!window.location.host.includes('local')) {
+        const foundUser = signInLocalStorage({ email, password })
+        return foundUser
+       }
         return { error: error.response.data.message || error.message };
     }
 };
@@ -85,7 +88,17 @@ export const update = async({ name, email, password }) => {
         return response.data
     } catch (error) {
         console.log(error);
-        if (!window.location.host.includes('local')) {}
+       if (!window.location.host.includes('local')) {
+        const user = getUserInfo()
+        const updatedUser = {
+            _id: user._id,
+            name: name || user.name,
+            email: email || user.email,
+            password: password || user.password
+        }
+        updateUser(updatedUser)
+        return updatedUser
+       }
         return { error: error.response.data.message || error.message };
     }
 };
